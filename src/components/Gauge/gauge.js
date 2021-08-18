@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import solidGauge from "highcharts/modules/solid-gauge.js";
@@ -80,7 +80,7 @@ const options = {
         {
           color: "#e6cb50",
           radius: "112%",
-          innerRadius: "35%",
+          innerRadius: "48%",
           y: 10
         }
       ]
@@ -88,15 +88,23 @@ const options = {
   ]
 };
 
-function ScreenOne(params) {
+function Gauge(health) {
+console.log(health.health);
 const [ chartData, setChartData ] = useState(options);
 
-function increaseChart() {
-    setChartData({...chartData,  series: [
-      { data: [{ y: Math.random().toFixed(1) * 100 }]}
-    ]
-  });
-}
+// function increaseChart() {
+//     setChartData({...chartData,  series: [
+//       { data: [{ y: health.health }]}
+//     ]
+//   });
+// }
+
+useEffect(() => {
+  setChartData({...chartData,  series: [
+    { data: [{ y: Number(health.health) }]}
+  ]
+});
+},[])
 
 return(
         <div>
@@ -104,9 +112,8 @@ return(
                 highcharts={Highcharts}
                 options={chartData}
             />
-            <button onClick={ increaseChart }>Increment</button>
         </div>
     )
 }
 
-export default ScreenOne;
+export default Gauge;

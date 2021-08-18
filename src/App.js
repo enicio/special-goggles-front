@@ -1,21 +1,23 @@
-import Main from './pages/main';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import ScreenOne from './components/screen01';
-import ScreenTwo from './components/screen02';
+import ScreenTwo from './components/assetsRegister/assetsRegister';
 import ScreenThree from './components/screen03';
+import NavBar from './components/NavBar/NavBar';
+import Registers from "./pages/resgisters/registers";
+import Dashboard from "./pages/dashboard.js/dashboard";
 
 function App() {
   return (
     <Router>
-      <Main />
+      <NavBar />
       <Switch>
-        <Route path="/assets" component={ ScreenOne }/>
-        <Route path="/unidades" component={ ScreenTwo }/>
-        <Route path="/company" component={ ScreenThree }/>
+        <Route path="/assets" component={ Dashboard }/>
+        <Route path="/unidades" component={ ScreenThree }/>
+        <Route path="/registers" component={ Registers }/>
       </Switch>
     </Router>
   );

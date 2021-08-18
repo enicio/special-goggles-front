@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import { useHistory } from 'react-router-dom';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -17,35 +17,25 @@ const options = {
     }]
   }
 
-function Main() {
+function Main(children) {
 const history = useHistory();
 
     return(
         <div>
-        <Layout >
+        	<Layout >
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-            <div className="logo" />
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                <Menu.Item onClick={() => history.push('/assets')} key="1">Ativos</Menu.Item>
-                <Menu.Item onClick={() => history.push('/unidades')}  key="2">Unidades</Menu.Item>
-                <Menu.Item onClick={() => history.push('/company')}  key="3">Company</Menu.Item>
-            </Menu>
+							<div className="logo" />
+								<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+								<Menu.Item onClick={() => history.push('/assets')} key="1">Ativos</Menu.Item>
+								<Menu.Item onClick={() => history.push('/unidades')}  key="2">Cadastro</Menu.Item>
+								<Menu.Item onClick={() => history.push('/company')}  key="3">Company</Menu.Item>
+							</Menu>
             </Header>
-            </Layout>
-            <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
-            {/* <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb> */}
-            {/* <div className="site-layout-background" style={{ padding: 24, minHeight: 380, height: '100vh' }}>
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options}
-                />
-            </div> */}
+            <Content className="site-layout" style={{ padding: '0 50px', marginTop: 164 }}>
+							Content
             </Content>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          </Layout>
         </div>
     )
 };
