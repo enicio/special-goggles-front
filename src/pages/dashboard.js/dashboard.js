@@ -5,9 +5,12 @@ import api from '../../services/api';
 import Gauge from '../../components/Gauge/gauge';
 
 import './dashboard.css'
+import DelegateUser from '../../components/userDelegate/userDelegate';
 
 const { Meta } = Card;
 const { Option } = Select;
+
+const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
 
 function onBlur() {
   console.log('blur');
@@ -26,10 +29,21 @@ const [ assets, setAssets ] = useState();
 const [ units, setUnits ] = useState('');
 const [ visible, setVisible ] = useState(false);
 const [ isSelected, setIdSelected ] = useState('');
+const [ selectedItems, setSelectedItems ] = useState([]);
+const [ users, setUsers ] = useState([]);
+
+const filteredOptions = OPTIONS.filter(o => !selectedItems.includes(o));
 
 const onClose = () => {
   setVisible(false);
 };
+
+useEffect(() => {
+  async function getUsers(){
+    await api.get('/users').then(response => setUsers(response.data.map(user => user.name)))
+  }
+  getUsers();
+},[]);
 
 useEffect(() => {
   async function getAssets(){
@@ -58,8 +72,13 @@ function Status(status) {
   return assetStatus[status];
 }
 
+function handleDelegateUser(selectedItems) {
+  console.log(selectedItems);
+  setSelectedItems(selectedItems);
+}
+
 if(!assets) return <h1>Loading</h1>;
-console.log(isSelected);
+// console.log(isSelected);
 
   return (
     <>
@@ -77,6 +96,7 @@ console.log(isSelected);
         <p>{isSelected.model}</p>
         <p>Some contents...</p>
         <img src={isSelected.image} alt="asset"/>
+
       </Drawer>
 
         <Select
@@ -115,6 +135,9 @@ console.log(isSelected);
                 <EllipsisOutlined key="ellipsis" />,
               ]}
             >
+
+              <DelegateUser />
+
               <Meta
                 avatar={<Avatar src={asset.image} />}
                 title={asset.name}

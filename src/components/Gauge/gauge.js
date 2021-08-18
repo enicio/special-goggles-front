@@ -14,7 +14,7 @@ const options = {
   },
 
   title: {
-    text: "Activity",
+    text: "Health",
     style: {
       fontSize: "24px"
     }
