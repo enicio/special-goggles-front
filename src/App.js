@@ -3,21 +3,20 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import ScreenOne from './components/screen01';
-import ScreenTwo from './components/assetsRegister/assetsRegister';
-import ScreenThree from './components/screen03';
 import NavBar from './components/NavBar/NavBar';
 import Registers from "./pages/resgisters/registers";
 import Dashboard from "./pages/dashboard.js/dashboard";
+import EditAsset from "./components/editAsset/editAsset";
 
 function App() {
   return (
     <Router>
       <NavBar />
       <Switch>
-        <Route path="/assets" component={ Dashboard }/>
-        <Route path="/unidades" component={ ScreenThree }/>
+        <Route exact path="/" component={ Dashboard }/>
+        {/* <Route path="/unidades" component={ ScreenThree }/> */}
         <Route path="/registers" component={ Registers }/>
+        <Route path="/assets/edit/:id" component={ EditAsset }/>
       </Switch>
     </Router>
   );

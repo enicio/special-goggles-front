@@ -28,7 +28,7 @@ function DelegateUser(params) {
     placeholder="Inserted are removed"
     value={selectedItems}
     onChange={handleDelegateUser}
-    style={{ width: '100%' }}
+    style={{ width: '100%', marginBottom: '15px' }}
   >
     {filteredOptions.map(item => (
       <Select.Option key={item} value={item}>

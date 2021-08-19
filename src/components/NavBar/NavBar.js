@@ -14,9 +14,9 @@ const history = useHistory();
         <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
           <div className="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-            <Menu.Item onClick={() => history.push('/assets')} key="1">Ativos</Menu.Item>
-            <Menu.Item onClick={() => history.push('/unidades')}  key="2">ops</Menu.Item>
-            <Menu.Item onClick={() => history.push('/registers')}  key="3">Cadastros</Menu.Item>
+            <Menu.Item onClick={() => history.push('/')} key="1">Ativos</Menu.Item>
+            {/* <Menu.Item onClick={() => history.push('/unidades')}  key="2">ops</Menu.Item> */}
+            <Menu.Item onClick={() => history.push('/registers')}  key="2">Cadastros</Menu.Item>
           </Menu>
         </Header>
       </Layout>
