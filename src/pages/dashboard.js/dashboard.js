@@ -50,7 +50,10 @@ useEffect(() => {
 },[]);
 
 async function onChangeUnit(value) {
-  await api.get(`/assets/unit/${value}`).then(response => setAssets(response.data))
+  console.log(value);
+  (value === 'all')
+  ? await api.get('/assets').then(response => setAssets(response.data))
+  :await api.get(`/assets/unit/${value}`).then(response => setAssets(response.data));
 }
 
 function Status(status) {
@@ -79,10 +82,13 @@ return (
       option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
     }
   >
+    <Option key="1" value="all">Todas</Option>
     { !!units && units
     .map( unit => <Option key={unit._id} value={ unit._id }>{ unit.name }</Option> ) }
   </Select>
+
   <div className="card-container">
+
     <Drawer
       title={isSelected.name}
       placement="right"
