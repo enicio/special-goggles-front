@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Avatar, Badge, Select, Drawer } from 'antd';
-import { SettingOutlined, EditOutlined } from '@ant-design/icons';
+import { Card, Avatar, Badge, Select, Drawer, Popconfirm } from 'antd';
+import { SettingOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router';
 import api from '../../services/api';
 import Gauge from '../../components/Gauge/gauge';
@@ -65,13 +65,20 @@ function Status(status) {
   return assetStatus[status];
 }
 
+async function confirm(assetid) {
+  console.log("Delete", assetid)
+  await api.delete(`/assets/${assetid}`).then(response => console.log(response));
+  window.location.reload();
+ alert("Ativo deletado com sucesso")
+}
+
 if(!assets) return <h1>Loading</h1>;
 
 return (
   <>
   <Select
     showSearch
-    style={{ width: '200px', marginTop: '80px' }}
+    style={{ width: '200px', marginTop: '80px', marginLeft: '10%' }}
     placeholder="Selecione unidade"
     optionFilterProp="children"
     onChange={onChangeUnit}
@@ -102,7 +109,7 @@ return (
     >
       <p>{isSelected.model}</p>
       <p>{isSelected.description}</p>
-      <img style={{width: '90%'}} src={isSelected.image} alt="asset"/>
+      <img style={{width: '50%'}} src={isSelected.image} alt="asset"/>
     </Drawer>
 
     {assets.map((asset) => {
@@ -121,6 +128,15 @@ return (
             actions={[
               <SettingOutlined onClick={() => { setIdSelected(asset) ;setVisible(!visible)  }} key="setting" />,
               <EditOutlined onClick={() => history.push(`/assets/edit/${asset._id}`)} key="edit" />,
+              <Popconfirm
+                placement="topRight"
+                title="Deseja deletar esse ativo"
+                onConfirm={ () => confirm(asset._id)}
+                okText="Yes"
+                cancelText="No"
+              >
+                <DeleteOutlined />
+              </Popconfirm>
             ]}
           >
 
