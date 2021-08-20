@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from '../../services/api';
-import { Form, Input, Button, Select, message } from 'antd';
+import { Form, Input, Button, Select } from 'antd';
 
 const { Option } = Select;
 
@@ -30,19 +30,11 @@ const [ companies, setCompanies ] = useState('');
 const [ units, setUnits ] = useState('');
 const [ user, setAsset ] = useState({});
 
-function success() {
-  message.success('Cadastro realizado com sucesso');
-};
-
-function fail() {
-  message.error('Falha no cadastro');
-};
-
 function onFinish() {
 
 api.post('/users', user)
-	.then(response => success())
-	.catch( () => fail());
+	.then(response => console.log(response))
+	.catch( response => console.log(response) );
 
 };
 
@@ -59,7 +51,6 @@ function onChange({target}) {
   setAsset({
     ...user,
     [target.name]: target.value,
-
   })
 }
 
@@ -78,6 +69,7 @@ function setunit(value) {
       unitId: value
   })
 }
+
 
 return (
 	<Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
@@ -100,7 +92,6 @@ return (
 			onChange={onChange}
 			rules={[
 				{
-					type: 'email',
 					required: true
 				},
 			]}

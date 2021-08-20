@@ -95,7 +95,6 @@ function setunit(value) {
     ...asset,
       unitId: value
   })
-
 }
 
 return (

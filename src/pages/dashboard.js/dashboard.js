@@ -78,11 +78,13 @@ return (
     onFocus={onFocus}
     onBlur={onBlur}
     onSearch={onSearch}
+    defaultValue="all"
+    label="Filtro por unidades"
     filterOption={(input, option) =>
       option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
     }
   >
-    <Option key="1" value="all">Todas</Option>
+    <Option key="1" value="all">Todas as unidades</Option>
     { !!units && units
     .map( unit => <Option key={unit._id} value={ unit._id }>{ unit.name }</Option> ) }
   </Select>

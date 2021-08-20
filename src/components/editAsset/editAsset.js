@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input } from 'antd';
+import { Form, Input, Select, Button } from 'antd';
 import api from '../../services/api';
+
+const { Option } = Select;
 
 const layout = {
   labelCol: {
@@ -23,27 +25,53 @@ const validateMessages = {
   },
 };
 
+function onSearch(val) {
+  console.log('search:', val);
+}
+
+
 function EditAsset(props) {
-  const { match: { params: { id } } } = props;
+  const [ companies, setCompanies ] = useState('');
+  const [ units, setUnits ] = useState('');
   const [ asset, setAsset ] = useState('');
+  const { match: { params: { id } } } = props;
   console.log(asset.name);
 
   function onFinish() {
+    console.log(id);
+    delete asset._id;
+    api.put(`/assets/${id}`, asset )
+      .then(response => console.log(response))
+      .catch( (err) => console.log(err) );
 
-    // api.post('/users', user)
-    //   .then(response => success())
-    //   .catch( () => fail());
+  };
 
-    };
+  function onChange({target}) {
+    console.log(asset);
+    console.log(target.value);
+      setAsset({
+        ...asset,
+        [target.name]: target.value,
 
-    function onChange({target}) {
-      console.log(target.value);
-      // setAsset({
-      //   ...user,
-      //   [target.name]: target.value,
+      })
+  }
 
-      // })
-    }
+  useEffect(() => {
+    function getCompanies() {
+      api.get('/companies')
+        .then(response => setCompanies(response.data) );
+      }
+    getCompanies();
+  },[])
+
+  useEffect(() => {
+    function getUnits() {
+      api.get('/units')
+        .then(response => setUnits(response.data) );
+      }
+    getUnits();
+  },[])
+
   useEffect(() => {
     async function getAssetById() {
       api.get(`/assets/${id}`)
@@ -51,6 +79,16 @@ function EditAsset(props) {
     }
     getAssetById();
   },[id])
+
+  function setunit(value) {
+    // console.log(target.name);
+    setAsset({
+      ...asset,
+        unitId: value
+    })
+  }
+
+  console.log(asset);
 
   if(!asset.name) return <h1>Loading</h1>;
 
@@ -60,11 +98,11 @@ function EditAsset(props) {
           name={['asset', 'model']}
           label="Modelo"
           onChange={onChange}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
+          // rules={[
+          //   {
+          //     required: true,
+          //   },
+          // ]}
         >
         <Input name={'model'} defaultValue={asset.model} />
       </Form.Item>
@@ -73,14 +111,55 @@ function EditAsset(props) {
          name={['asset', 'name']}
          label="Nome"
          onChange={onChange}
-         rules={[
-           {
-             required: true,
-           },
-         ]}
+        //  rules={[
+        //    {
+        //      required: true,
+        //    },
+        //  ]}
       >
         <Input name={'name'} defaultValue={asset.name} />
       </Form.Item>
+
+      <Form.Item>
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Selecione a empresa"
+          optionFilterProp="children"
+          defaultValue={asset.companyId}
+          onSearch={onSearch}
+          filterOption={(input, option) =>
+            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+        >
+          { !!companies && companies
+          .map( companie => <Option key={companie._id} value={ companie._id }>{ companie.name }</Option> ) }
+        </Select>
+      </Form.Item>
+
+      <Form.Item>
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Selecione unidade"
+          optionFilterProp="children"
+          defaultValue={asset.unitId}
+          onSearch={onSearch}
+          onChange={setunit}
+          filterOption={(input, option) =>
+            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+        >
+          { !!units && units
+          .map( unit => <Option key={unit._id} value={ unit._id }>{ unit.name }</Option> ) }
+        </Select>
+    </Form.Item>
+
+    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+      <Button type="primary" htmlType="submit">
+        Atualizar
+      </Button>
+    </Form.Item>
     </Form>
   )
 }
