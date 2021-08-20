@@ -47,7 +47,6 @@ useEffect(() => {
 },[])
 
 function onChange({target}) {
-  console.log(target.value);
   setAsset({
     ...user,
     [target.name]: target.value,

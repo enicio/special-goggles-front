@@ -92,13 +92,6 @@ function Gauge(health) {
 console.log(health.health);
 const [ chartData, setChartData ] = useState(options);
 
-// function increaseChart() {
-//     setChartData({...chartData,  series: [
-//       { data: [{ y: health.health }]}
-//     ]
-//   });
-// }
-
 useEffect(() => {
   setChartData({...chartData,  series: [
     { data: [{ y: Number(health.health) }]}

@@ -7,6 +7,8 @@ import Gauge from '../../components/Gauge/gauge';
 
 import './dashboard.css'
 import DelegateUser from '../../components/userDelegate/userDelegate';
+import Loading from '../../components/loading/loading';
+import EmptyPage from '../../components/emptyPage/emptyPage';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -50,7 +52,6 @@ useEffect(() => {
 },[]);
 
 async function onChangeUnit(value) {
-  console.log(value);
   (value === 'all')
   ? await api.get('/assets').then(response => setAssets(response.data))
   :await api.get(`/assets/unit/${value}`).then(response => setAssets(response.data));
@@ -66,13 +67,12 @@ function Status(status) {
 }
 
 async function confirm(assetid) {
-  console.log("Delete", assetid)
   await api.delete(`/assets/${assetid}`).then(response => console.log(response));
   window.location.reload();
  alert("Ativo deletado com sucesso")
 }
 
-if(!assets) return <h1>Loading</h1>;
+if(!assets) return <Loading />;
 
 return (
   <>
@@ -112,7 +112,9 @@ return (
       <img style={{width: '50%'}} src={isSelected.image} alt="asset"/>
     </Drawer>
 
-    {assets.map((asset) => {
+    {(assets.length === 0)
+      ? <EmptyPage />
+      : assets.map((asset) => {
       return (
         <Badge.Ribbon
             color={Status(asset.status)}
