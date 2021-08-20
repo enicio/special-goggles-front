@@ -1,8 +1,5 @@
-.ant-card {
-  margin: 16px;
-}
-
 .ant-ribbon-wrapper {
+  box-shadow: 3px 3px 1em #a0a0a0;
   margin: 10px;
   width: 300px ;
 }

@@ -81,7 +81,6 @@ function getUnitsByCompany(value) {
 }
 
 function onChange({target}) {
-  console.log(target.value);
   setAsset({
     ...asset,
     [target.name]: target.value,
@@ -90,7 +89,6 @@ function onChange({target}) {
 }
 
 function setunit(value) {
-  // console.log(target.name);
   setAsset({
     ...asset,
       unitId: value

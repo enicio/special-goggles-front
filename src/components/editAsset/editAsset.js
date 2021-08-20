@@ -35,10 +35,8 @@ function EditAsset(props) {
   const [ units, setUnits ] = useState('');
   const [ asset, setAsset ] = useState('');
   const { match: { params: { id } } } = props;
-  console.log(asset.name);
 
   function onFinish() {
-    console.log(id);
     delete asset._id;
     api.put(`/assets/${id}`, asset )
       .then(response => console.log(response))
@@ -47,8 +45,6 @@ function EditAsset(props) {
   };
 
   function onChange({target}) {
-    console.log(asset);
-    console.log(target.value);
       setAsset({
         ...asset,
         [target.name]: target.value,
@@ -81,14 +77,11 @@ function EditAsset(props) {
   },[id])
 
   function setunit(value) {
-    // console.log(target.name);
     setAsset({
       ...asset,
         unitId: value
     })
   }
-
-  console.log(asset);
 
   if(!asset.name) return <h1>Loading</h1>;
 
