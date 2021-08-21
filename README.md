@@ -35,6 +35,11 @@ A tela principal foi desenvolvida para mostrar de forma aninhada os ativos cadas
 - [Ant Desing](https://ant.design/)
 - [Highcharts](https://www.highcharts.com/)
 #
+
+## Link para o Dashboard
+
+[AIPSI monitoramento](https://special-goggles-front.vercel.app/)
+
 ## Como executar
 
 Clone o projeto
