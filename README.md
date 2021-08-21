@@ -85,7 +85,7 @@ Inicie o servidor
 - Refatorar algumas partes do código craindo componentes e evitar códigos duplicados.
 - Implementar algum gerenciador de estados centralizados como Redux ou ContexAPI. Isso será essencial para expandir o projeto com mais telas e funcionalidades.
 
+### Considerações finais
 
-
-
-
+Fiquei contente com o resultado da implementação ate o momento. Construi um aplicação com frontend hospedado na Vercel, backend na Heroku, upload de imagens na Amazon S3 e banco de dados no Mongo Atlas. Tudo devidamente configurado com variáveis de ambiente, logo facilita muito na troca de parametros sem precisar de intervenção no código.
+Tenho em mente de continuar a implementar as melhorias citadas acima para monitorar as maquinas do meu laboratório, por exemplo, minha cnc, impressora 3D e ate mesmo os meus computadores. A aquisição de dados será feita por sistemas embarcados, mas esse é um outro projeto que estou criando em paralelo e em breve terei um repositório para ele.
