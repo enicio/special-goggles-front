@@ -4,14 +4,13 @@
 <img src="https://ucarecdn.com/51a43b88-8cad-41a7-8584-3b0e42915b92/-/preview/-/quality/smart/"/>
 <img src="https://ucarecdn.com/450c3f64-b41a-45f5-9aee-f2864a662756/-/preview/-/quality/smart/"/>
 <img src="https://ucarecdn.com/c5437a9a-d068-463f-aa2a-1711d75f7943/-/preview/-/quality/smart/"/>
-<img src="https://ucarecdn.com/89c06126-764c-4044-b0ad-281e71c12877/-/preview/-/quality/smart/"/>
 <img src="https://ucarecdn.com/b46f527b-5802-46be-b172-76fe6c53e469/-/preview/-/quality/smart/"/>
 </p>
 
 
 ### Protótipo de um dashboard para gerenciamento de ativos na industria
-    A tela principal foi desenvolvida para mostrar de forma aninhada os ativos cadastrados nessa [api](https://aipsi.herokuapp.com/). Cada equipamento deve ser apresentado em um card contendo o status, a saúde, nome, modelo e as opçõs para atribuir um funcionário para manutenção. Alem do rodapé com as opções de ver detalhes, editar e deletar
-#
+A tela principal foi desenvolvida para mostrar de forma aninhada os ativos cadastrados nessa [api](https://aipsi.herokuapp.com/). Cada equipamento deve ser apresentado em um card contendo o status, a saúde, nome, modelo e as opçõs para atribuir um funcionário para manutenção. Alem do rodapé com as opções de ver detalhes, editar e deletar
+
 
 
 ### Sobre o desenvolvimento
