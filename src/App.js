@@ -14,7 +14,6 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={ Dashboard }/>
-        {/* <Route path="/unidades" component={ ScreenThree }/> */}
         <Route path="/registers" component={ Registers }/>
         <Route path="/assets/edit/:id" component={ EditAsset }/>
       </Switch>
