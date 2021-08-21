@@ -1,4 +1,5 @@
 <h1 align="center" >Projeto Aipsi</h1>
+<h3 align="center" > Painel de monitoramento de ativos da industria </h3>
 
 <p align="center" >
 <img src="https://ucarecdn.com/51a43b88-8cad-41a7-8584-3b0e42915b92/-/preview/-/quality/smart/"/>
@@ -9,13 +10,13 @@
 
 
 ### Protótipo de um dashboard para gerenciamento de ativos na industria
-A tela principal foi desenvolvida para mostrar de forma aninhada os ativos cadastrados nessa [api](https://aipsi.herokuapp.com/). Cada equipamento deve ser apresentado em um card contendo o status, a saúde, nome, modelo e as opçõs para atribuir um funcionário para manutenção. Alem do rodapé com as opções de ver detalhes, editar e deletar
+A tela principal foi desenvolvida para mostrar de forma aninhada os ativos cadastrados nessa [api](https://aipsi.herokuapp.com/). Cada equipamento deve ser apresentado em um card contendo o status, a saúde, nome, modelo e a opção para atribuir um funcionário para manutenção. Alem do rodapé com as opções de ver detalhes, editar e deletar
 
 
 
 ### Sobre o desenvolvimento
 
-  A idéia que norteou o desenvolvimento da aplicação foi a de mostrar o máximo de dados sobre os equipamento sem criar um ambiente poluido. Criar uma proposta que facilita a atribuição de um funcionácio para verificar o equipamento mediante aos dados no card.
+  A idéia que norteou o desenvolvimento da aplicação foi a de mostrar o máximo de dados sobre os equipamento sem criar um ambiente poluído. Criar uma proposta que facilita a atribuição de um funcionário para verificar o equipamento mediante aos dados no card.
   E ainda fazer uma visualização de detalhes sem sair da tela principal
 #
 ## Funcionalidades
@@ -70,17 +71,19 @@ Inicie o servidor
 #
 
 ### Aprendizados
-- Não conhecia a biblioteca Ant Design, gostei muito da simplicidade de uso e da qualidade da documetação.
+- Não conhecia a biblioteca Ant Design, gostei muito da simplicidade de uso e da qualidade da documentação.
 - Utilizar o biblioteca de graficos Highchart
 
-## Dificuldades enconttradas
-- Em alguns momentos na implementação de componentes da biblioteca Ant Design, ficou meio abstrado como passar dados para estes.
-- Tive dificuldade tambem com a configuração com gráfico do tipo gauge com a biblioteva Highchart. Eram muitos parametros no objeto com a configuração.
+### Dificuldades enconttradas
+- Apesar da boa documentação, em alguns momentos ficou meio abstrato em como interagir e passar dados para alguns componentes utilizados.
+- Tive dificuldade tambem com a configuração com gráfico do tipo gauge com a biblioteva Highchart, pois eram muitos parametros no objeto com a configuração.
 
-## Possiveis melhorias para o projeto
+### Possiveis melhorias para o projeto
 - Implementar todo o fluxo de e paginas de chamados para da usuários.
 - Desenvolver o sistema de autenticação, atribuindo responsabilidades por niveis de usuários.
 - Criar a funcionalidade de atualização dinâmica atraves de sockets em conjunto com o backend da aplicação.
+- Refatorar algumas partes do código craindo componentes e evitar códigos duplicados.
+- Implementar algum gerenciador de estados centralizados como Redux ou ContexAPI. Isso será essencial para expandir o projeto com mais telas e funcionalidades.
 
 
 
