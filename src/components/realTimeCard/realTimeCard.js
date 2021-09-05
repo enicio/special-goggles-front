@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Statistic, Card, Row, Col } from 'antd';
 import { AntCloudOutlined } from '@ant-design/icons';
-import { useState } from 'react/cjs/react.development';
 import socketIOClient from "socket.io-client";
 import './realTimeCard.css'
 // const socket = io.connect("http://localhost:5000");
