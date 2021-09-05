@@ -9,6 +9,7 @@ import './dashboard.css'
 import DelegateUser from '../../components/userDelegate/userDelegate';
 import Loading from '../../components/loading/loading';
 import EmptyPage from '../../components/emptyPage/emptyPage';
+import RealTimeCard from '../../components/realTimeCard/realTimeCard';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -97,7 +98,6 @@ return (
   </Select>
 
   <div className="card-container">
-
     <Drawer
       title={isSelected.name}
       placement="right"
