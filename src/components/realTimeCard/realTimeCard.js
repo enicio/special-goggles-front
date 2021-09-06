@@ -6,8 +6,8 @@ import './realTimeCard.css'
 // const socket = io.connect("http://localhost:5000");
 
 // const ENDPOINT = 'https://socket-aipsi.herokuapp.com/';
-const ENDPOINT = 'http://localhost:5000';
-// const ENDPOINT = 'https://aipsi.herokuapp.com';
+// const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'https://aipsi.herokuapp.com';
 const socket = socketIOClient(ENDPOINT);
 
 function RealTimeCard() {
