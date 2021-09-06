@@ -6,8 +6,8 @@ import './realTimeCard.css'
 // const socket = io.connect("http://localhost:5000");
 
 // const ENDPOINT = 'https://socket-aipsi.herokuapp.com/';
-// const ENDPOINT = 'http://localhost:5000';
-const ENDPOINT = 'https://aipsi.herokuapp.com';
+const ENDPOINT = 'http://localhost:5000';
+// const ENDPOINT = 'https://aipsi.herokuapp.com';
 const socket = socketIOClient(ENDPOINT);
 
 function RealTimeCard() {
@@ -30,7 +30,7 @@ const [ temp, setTemp] = useState('');
       <Col span={80}>
         <Card>
           <Statistic
-            title="Temperatura"
+            title="Luminosidade"
             value={temp}
             precision={2}
             valueStyle={{ color: '#3f8600' }}
